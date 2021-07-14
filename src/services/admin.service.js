@@ -5,10 +5,17 @@ const API_URL = "http://localhost:3000/api/";
 
 class AdminService {
   create(doctorName, description, slot) {
-    return axios.get(API_URL + "appointment/create", {
-      headers: authHeader(),
-      data: { doctorName, description, slot },
-    });
+    return axios.post(
+      API_URL + "appointment/create",
+      {
+        doctorName,
+        description,
+        slot,
+      },
+      {
+        headers: authHeader(),
+      }
+    );
   }
 
   viewAppointment(id) {
