@@ -38,7 +38,7 @@ export default class BoardUser extends Component {
   }
 
   handleDeleteClick(id) {
-    AdminService.delete(id).then(this.fetchApi());
+    AdminService.delete(id).then(() => this.fetchApi());
   }
 
   render() {

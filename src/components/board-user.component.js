@@ -36,11 +36,11 @@ export default class BoardUser extends Component {
   }
 
   handleRegisterClick(id) {
-    UserService.registerAppointment(id).then(this.fetchApi());
+    UserService.registerAppointment(id).then(() => this.fetchApi());
   }
 
   handleCancelClick(id) {
-    UserService.cancelAppointment(id).then(this.fetchApi());
+    UserService.cancelAppointment(id).then(() => this.fetchApi());
   }
 
   render() {
