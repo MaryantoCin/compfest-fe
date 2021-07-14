@@ -35,8 +35,12 @@ export default class BoardUser extends Component {
     this.fetchApi();
   }
 
-  handleCardClick(id) {
-    UserService.registerAppointment(id).then();
+  handleRegisterClick(id) {
+    UserService.registerAppointment(id).then(this.fetchApi());
+  }
+
+  handleCancelClick(id) {
+    UserService.cancelAppointment(id).then(this.fetchApi());
   }
 
   render() {
@@ -54,11 +58,17 @@ export default class BoardUser extends Component {
                     </h6>
                     <p className="card-text">{content.description}</p>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary me-3"
                       disabled={content.slot <= 0 ? true : false}
-                      onClick={() => this.handleCardClick(content._id)}
+                      onClick={() => this.handleRegisterClick(content._id)}
                     >
                       Register
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => this.handleCancelClick(content._id)}
+                    >
+                      Cancel
                     </button>
                   </div>
                 </div>

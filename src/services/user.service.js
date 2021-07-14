@@ -13,13 +13,13 @@ class UserService {
   }
 
   registerAppointment(id) {
-    return axios.post(API_URL + "appointment/" + id + "/register", {
+    return axios.get(API_URL + "appointment/" + id + "/register", {
       headers: authHeader(),
     });
   }
 
   cancelAppointment(id) {
-    return axios.post(API_URL + "appointment/" + id + "/cancel", {
+    return axios.get(API_URL + "appointment/" + id + "/cancel", {
       headers: authHeader(),
     });
   }

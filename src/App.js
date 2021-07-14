@@ -10,6 +10,7 @@ import Register from "./components/register.component";
 import Home from "./components/home.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
+import Create from "./components/create.component";
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
+        isAdmin: user.role === "Administrator" ? true : false,
       });
     }
   }
@@ -53,12 +55,20 @@ class App extends Component {
             {isAdmin && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                  View
                 </Link>
               </li>
             )}
 
-            {currentUser && (
+            {isAdmin && (
+              <li className="nav-item">
+                <Link to={"/create"} className="nav-link">
+                  Create
+                </Link>
+              </li>
+            )}
+
+            {currentUser && !isAdmin && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
                   User
@@ -108,6 +118,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route path="/user" component={BoardUser} />
             <Route path="/admin" component={BoardAdmin} />
+            <Route path="/create" component={Create} />
           </Switch>
         </div>
       </div>
