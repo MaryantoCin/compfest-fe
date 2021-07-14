@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import AdminService from "../services/admin.service";
 
 import UserService from "../services/user.service";
 
@@ -35,12 +37,8 @@ export default class BoardUser extends Component {
     this.fetchApi();
   }
 
-  handleRegisterClick(id) {
-    UserService.registerAppointment(id).then();
-  }
-
-  handleCancelClick(id) {
-    UserService.cancelAppointment(id).then();
+  handleDeleteClick(id) {
+    AdminService.delete(id).then(this.fetchApi());
   }
 
   render() {
@@ -57,12 +55,17 @@ export default class BoardUser extends Component {
                       Slot: {content.slot}
                     </h6>
                     <p className="card-text">{content.description}</p>
-                    <button
+                    <Link
+                      to={"appointment/" + content._id}
                       className="btn btn-primary me-3"
-                      disabled={content.slot <= 0 ? true : false}
-                      onClick={() => this.handleRegisterClick(content._id)}
                     >
                       View registrants
+                    </Link>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => this.handleDeleteClick(content._id)}
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

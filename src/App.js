@@ -11,6 +11,7 @@ import Home from "./components/home.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
 import Create from "./components/create.component";
+import Show from "./components/show.component";
 
 class App extends Component {
   constructor(props) {
@@ -119,6 +120,7 @@ class App extends Component {
             <Route path="/user" component={BoardUser} />
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/create" component={Create} />
+            <Route path="/appointment/:id" component={Show} />
           </Switch>
         </div>
       </div>

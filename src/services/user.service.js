@@ -23,12 +23,6 @@ class UserService {
       headers: authHeader(),
     });
   }
-
-  viewAppointment(id) {
-    return axios.get(API_URL + "appointment/" + id + "/registrants", {
-      headers: authHeader(),
-    });
-  }
 }
 
 export default new UserService();

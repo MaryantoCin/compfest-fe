@@ -10,6 +10,18 @@ class AdminService {
       data: { doctorName, description, slot },
     });
   }
+
+  viewAppointment(id) {
+    return axios.get(API_URL + "appointment/" + id + "/registrants", {
+      headers: authHeader(),
+    });
+  }
+
+  delete(id) {
+    return axios.delete(API_URL + "appointment/" + id, {
+      headers: authHeader(),
+    });
+  }
 }
 
 export default new AdminService();
